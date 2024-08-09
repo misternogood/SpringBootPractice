@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせの編集画面</title>
+</head>
+<body>
+    <h1>お問い合わせ編集</h1>
+    <form th:action="@{/admin/contacts/{id}/edit(id=${id})}" th:object="${contactForm}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for="lastName">姓:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" required>
+        </div>
+        <div>
+            <label for="firstName">名:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" required>
+        </div>
+        <div>
+            <label for="email">メールアドレス:</label>
+            <input type="email" id="email" th:field="*{email}" required>
+        </div>
+        <div>
+            <label for="phone">電話番号:</label>
+            <input type="text" id="phone" th:field="*{phone}" required>
+        </div>
+        <div>
+            <label for="zipCode">郵便番号:</label>
+            <input type="text" id="zipCode" th:field="*{zipCode}" required>
+        </div>
+        <div>
+            <label for="address">住所:</label>
+            <input type="text" id="address" th:field="*{address}" required>
+        </div>
+        <div>
+            <label for="buildingName">建物名:</label>
+            <input type="text" id="buildingName" th:field="*{buildingName}" required>
+        </div>
+        <div>
+            <label for="contactType">お問い合わせ種別:</label>
+            <select name="contactType" id="contactType">
+	        	<option th:value="services">サービスに関するお問い合わせ</option>
+	            <option th:value="technicalQuestions">技術的なお問い合わせ</option>
+	            <option th:value="others">その他</option>
+          	</select>
+        </div>
+        <div>
+            <label for="body">お問い合わせ内容:</label>
+            <textarea id="body" th:field="*{body}" required></textarea>
+        </div>
+        <div>
+            <button type="submit">更新</button>
+        </div>
+    </form>
+    <form th:action="@{/admin/logout}" method="get">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+</html>
+
+
+
